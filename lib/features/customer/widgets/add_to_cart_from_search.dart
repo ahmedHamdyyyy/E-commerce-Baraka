@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import '../../../../../../config/colors/colors.dart';
 import '../../../core/services/service_locator.dart';
-import '../../../models/cart.dart';
 import '../logic/customer_cubit.dart';
 import '../screens/home/chat/chat_with_user.dart';
 
@@ -104,18 +103,21 @@ class AddTOCheckoutCardFromSearch extends StatelessWidget {
                 ),
                 Expanded(
                   child: ElevatedButton(
-
                     onPressed: () {
-                      if(getit<CustomerCubit>().
-                      isProdinCart(productId: state.product.id)){
+                      if (getit<CustomerCubit>()
+                          .isProdinCart(productId: state.product.id)) {
                         return;
                       }
-                      getit<CustomerCubit>()
-                          .addInUserCart(state.searchProduct[index].id, 1,);
+                      getit<CustomerCubit>().addInUserCart(
+                        state.searchProduct[index].id,
+                        1,
+                      );
                     },
                     child: Text(
-                      !getit<CustomerCubit>().
-                      isProdinCart(productId: state.product.id)?   "add To Cart":"in  Cart",
+                      !getit<CustomerCubit>()
+                              .isProdinCart(productId: state.product.id)
+                          ? "add To Cart"
+                          : "in  Cart",
                       style: TextStyle(color: kTextColor[state.theme]),
                     ),
                   ),

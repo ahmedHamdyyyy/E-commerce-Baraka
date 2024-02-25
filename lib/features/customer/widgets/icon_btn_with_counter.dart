@@ -4,8 +4,9 @@ import 'package:shop/features/customer/logic/customer_cubit.dart';
 
 import '../../../config/colors/colors.dart';
 
+// ignore: must_be_immutable
 class IconBtnWithCounter extends StatelessWidget {
-   IconBtnWithCounter({
+  IconBtnWithCounter({
     super.key,
     required this.svgSrc,
     this.numOfItem = 0,
@@ -46,30 +47,30 @@ class IconBtnWithCounter extends StatelessWidget {
             ),
           ),
           //if (numOfItem != 0)
-            Positioned(
-              top: -3,
-              right: 0,
-              child: Container(
-                height: 20,
-                width: 20,
-                decoration: BoxDecoration(
-                  color: const Color(0xFFFF4848),
-                  shape: BoxShape.circle,
-                  border: Border.all(width: 1.5, color: Colors.white),
-                ),
-                child: Center(
-                  child: Text(
-                    "$numOfItem",
-                    style: const TextStyle(
-                      fontSize: 12,
-                      height: 1,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
+          Positioned(
+            top: -3,
+            right: 0,
+            child: Container(
+              height: 20,
+              width: 20,
+              decoration: BoxDecoration(
+                color: const Color(0xFFFF4848),
+                shape: BoxShape.circle,
+                border: Border.all(width: 1.5, color: Colors.white),
+              ),
+              child: Center(
+                child: Text(
+                  "$numOfItem",
+                  style: const TextStyle(
+                    fontSize: 12,
+                    height: 1,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
                   ),
                 ),
               ),
-            )
+            ),
+          )
         ],
       ),
     );

@@ -1,4 +1,3 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop/features/user/widgets/Loding.dart';
@@ -60,7 +59,8 @@ class _UpdateScreenState extends State<UpdateScreen> {
                             productName: nameController.text.trim(),
                             category: _categoryValue!,
                             desc: descriptionController.text.trim(),
-                            productPrice: int.parse(priceController.text.trim()),
+                            productPrice:
+                                int.parse(priceController.text.trim()),
                             discount: int.parse(discountController.text.trim()),
                             folderId: state.product.folderId,
                             images: state.product.images,
@@ -68,23 +68,28 @@ class _UpdateScreenState extends State<UpdateScreen> {
                         );
                         //nameController.clear();
                       },
-                      child: state.updateProductStatus == Status.loading
-                          ? const CircularProgressIndicator()
-                          : const Text(
-                              "update Product",
-                              //style: TextStyle(color: Colors.white),
-                            ),
+                      child:
+                          //state.updateProductStatus == Status.loading
+                          // ? const CircularProgressIndicator()
+                          // :
+                          const Text(
+                        "update Product",
+                        //style: TextStyle(color: Colors.white),
+                      ),
                     );
                   },
                 ),
               ],
             ),
-            body: state.getProductStatus==Status.loading?Loading(): body_update_product(state),
+            body: state.getProductStatus == Status.loading
+                ? Loading()
+                : body_update_product(state),
           );
         },
       ),
     );
   }
+
   RefreshIndicator body_update_product(UserState state) {
     return RefreshIndicator(
       onRefresh: () async => getit<UserCubit>().getProduct(widget.id),
@@ -94,18 +99,19 @@ class _UpdateScreenState extends State<UpdateScreen> {
           padding: const EdgeInsets.all(15.0),
           child: ListView(
             children: [
-
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   DropdownButton(
                       items: AppConst.categoriesDropDownList,
                       value: _categoryValue,
-                      hint:  Text( _categoryValue!,
-                        style: TextStyle(color: Colors.black),),
+                      hint: Text(
+                        _categoryValue!,
+                        style: TextStyle(color: Colors.black),
+                      ),
                       onChanged: (String? value) {
                         setState(() {
-                          _categoryValue =  value;
+                          _categoryValue = value;
                         });
                       }),
                 ],
@@ -116,14 +122,13 @@ class _UpdateScreenState extends State<UpdateScreen> {
                 controller: descriptionController,
                 maxLines: 6,
                 minLines: 3,
-                validator: (value) =>
-                    InputValidation.nameValidation(value),
+                validator: (value) => InputValidation.nameValidation(value),
                 decoration: const InputDecoration(
                   labelText: "description",
                   hintText: "Write a description of the product",
                   floatingLabelBehavior: FloatingLabelBehavior.always,
-                  suffixIcon: CustomSuffixIcon(
-                      svgIcon: "assets/icons/User.svg"),
+                  suffixIcon:
+                      CustomSuffixIcon(svgIcon: "assets/icons/User.svg"),
                 ),
               ),
               const SizedBox(height: 20),
@@ -132,14 +137,13 @@ class _UpdateScreenState extends State<UpdateScreen> {
                 controller: nameController,
                 style: const TextStyle(color: Colors.black),
                 maxLength: 40,
-                validator: (value) =>
-                    InputValidation.nameValidation(value),
+                validator: (value) => InputValidation.nameValidation(value),
                 decoration: const InputDecoration(
                   labelText: "Name Product",
                   hintText: "Enter your Name Product",
                   floatingLabelBehavior: FloatingLabelBehavior.always,
-                  suffixIcon: CustomSuffixIcon(
-                      svgIcon: "assets/icons/Phone.svg"),
+                  suffixIcon:
+                      CustomSuffixIcon(svgIcon: "assets/icons/Phone.svg"),
                 ),
               ),
               /*    TextFormField(
@@ -174,8 +178,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                 ),
               ),
               TextFormField(
-                validator: (value) =>
-                    InputValidation.nameValidation(value),
+                validator: (value) => InputValidation.nameValidation(value),
                 controller: discountController,
                 style: const TextStyle(color: Colors.black),
                 keyboardType: TextInputType.phone,
@@ -189,7 +192,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                 ),
               ),
               ElevatedButton(
-                onPressed: ()  {
+                onPressed: () {
                   getit<UserCubit>().updateProduct(
                     ProductModel(
                       id: state.product.id,
@@ -229,5 +232,4 @@ class _UpdateScreenState extends State<UpdateScreen> {
       ),
     );
   }
-
 }

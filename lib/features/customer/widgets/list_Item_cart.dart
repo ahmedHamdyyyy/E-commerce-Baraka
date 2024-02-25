@@ -2,13 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:shop/features/customer/widgets/tost.dart';
 import '../../../config/colors/colors.dart';
 import '../../../core/services/service_locator.dart';
-import '../../../models/cart.dart';
 import '../../../models/product.dart';
 import '../logic/customer_cubit.dart';
 import '../screens/home/AllOffers/details_screen_product.dart';
+import '../screens/home/AllOffers/details_screen_product_from_catygory.dart';
 
 Widget itemProductCatiogoryProduct(
     CustomerState state, int index, BuildContext context) {
@@ -23,8 +22,7 @@ Widget itemProductCatiogoryProduct(
             onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => DetailsScreenProduct(
-                    index: index,
+                  builder: (context) => DetailsScreenFromCatygory(
                     productId: state.categoryProducts[index].id,
                   ),
                 )),

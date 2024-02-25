@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shop/config/services/my_app_functions.dart';
 import 'package:shop/config/widgets/cart_screen_empty.dart';
 import '../../../../../config/colors/colors.dart';
 import '../../../../../config/constants/constance.dart';
-import '../../../../../config/services/assets_manager.dart';
 import '../../../../../core/services/service_locator.dart';
 import '../../../../user/widgets/Loding.dart';
 import '../../../logic/customer_cubit.dart';
@@ -34,7 +32,7 @@ class _CartScreenState extends State<CartScreen> {
       value: getit<CustomerCubit>()
         ..getCartCustomer(getit<CustomerCubit>().getId()),
       child: BlocBuilder<CustomerCubit, CustomerState>(
-       // buildWhen: (previous, current) =>previous.cartsProducts !=current.cartsProducts || previous.updateCustomerState !=current.updateCustomerState ,
+        // buildWhen: (previous, current) =>previous.cartsProducts !=current.cartsProducts || previous.updateCustomerState !=current.updateCustomerState ,
         builder: (context, state) {
           return state.cartsProducts.isEmpty
               ? ScreenImpty(
@@ -42,7 +40,7 @@ class _CartScreenState extends State<CartScreen> {
                   text: "Your cart is empty 💔",
                 )
               : Scaffold(
-                  appBar: appBarCart(state,context),
+                  appBar: appBarCart(state, context),
                   body: RefreshIndicator(
                       onRefresh: () async => getit<CustomerCubit>()
                           .getCartCustomer(getit<CustomerCubit>().getId()),
@@ -97,8 +95,8 @@ class _CartScreenState extends State<CartScreen> {
                                         builder: (context, state) {
                                           return CartCard(
                                             cartModel: state
-                                              .cartsProducts.values
-                                              .toList()[index],
+                                                .cartsProducts.values
+                                                .toList()[index],
                                             state: state,
                                           );
                                         },
@@ -114,5 +112,3 @@ class _CartScreenState extends State<CartScreen> {
     );
   }
 }
-
-

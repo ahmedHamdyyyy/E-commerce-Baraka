@@ -39,9 +39,7 @@ class _DetailsScreenProductState extends State<DetailsScreenProduct> {
           return Scaffold(
             extendBody: true,
             extendBodyBehindAppBar: true,
-            //backgroundColor: const Color(0xFFF5F6F9),
             appBar: AppBar(
-              //backgroundColor: Colors.transparent,
               elevation: 0,
               leading: Padding(
                 padding: const EdgeInsets.all(8.0),

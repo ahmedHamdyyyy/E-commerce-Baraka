@@ -1,7 +1,6 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../components/custom_surfix_icon.dart';
@@ -31,20 +30,15 @@ class _AddProductScreenState extends State<AddProductScreen> {
   List<String> images = [];
   String? _categoryValue;
 
-
   @override
   Widget build(BuildContext context) {
-
     return BlocProvider.value(
       value: getit<UserCubit>(),
       child: Scaffold(
         appBar: AppBar(
-            backgroundColor: checkOutCartColor[0],
-          iconTheme: const IconThemeData(
-            color: Colors.white
-          ),
-
-            ),
+          backgroundColor: checkOutCartColor[0],
+          iconTheme: const IconThemeData(color: Colors.white),
+        ),
         body: Form(
           key: _formKey,
           child: Padding(
@@ -57,8 +51,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     DropdownButton(
                         items: AppConst.categoriesDropDownList,
                         value: _categoryValue,
-                        hint: const Text("Choose a Category",
-                          style: TextStyle(color: Colors.black),),
+                        hint: const Text(
+                          "Choose a Category",
+                          style: TextStyle(color: Colors.black),
+                        ),
                         onChanged: (String? value) {
                           setState(() {
                             _categoryValue = value;
@@ -96,7 +92,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                         CustomSuffixIcon(svgIcon: "assets/icons/Phone.svg"),
                   ),
                 ),
-             /*   TextFormField(
+                /*   TextFormField(
                   style: TextStyle(color: kTextColor[0]),
                   readOnly: true,
                   //initialValue: "123",
@@ -199,19 +195,19 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     return ElevatedButton(
                       style: elevatedButtonTheme(),
                       onPressed: () {
-                        if(_formKey.currentState!.validate())return null;
+                        if (!_formKey.currentState!.validate()) return null;
                         getit<UserCubit>().addProduct(
                           ProductModel(
                             id: Uuid().v4(),
                             userId: getit<UserCubit>().getId(),
                             productName: nameController.text.trim(),
-                            category:_categoryValue.toString() ,
+                            category: _categoryValue.toString(),
                             desc: descriptionController.text.trim(),
-                            productPrice: int.parse(priceController.text.trim()),
+                            productPrice:
+                                int.parse(priceController.text.trim()),
                             discount: int.parse(discountController.text.trim()),
                             folderId: AppConst.newId(),
                             images: images,
-
                           ),
                         );
                         nameController.clear();
@@ -245,7 +241,6 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-
               ],
             ),
           ),
@@ -253,6 +248,4 @@ class _AddProductScreenState extends State<AddProductScreen> {
       ),
     );
   }
-
-
 }

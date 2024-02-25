@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../components/components.dart';
-import '../../../config/colors/colors.dart';
 import '../../customer/widgets/small_product_image.dart';
 
 class ProductImages extends StatefulWidget {
@@ -69,4 +67,3 @@ class _ProductImagesState extends State<ProductImages> {
     );
   }
 }
-

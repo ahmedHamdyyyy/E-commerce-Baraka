@@ -1,19 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop/config/constants/constance.dart';
 import 'package:shop/config/services/assets_manager.dart';
 import 'package:shop/config/widgets/cart_screen_empty.dart';
-import 'package:shop/features/customer/widgets/tost.dart';
-import 'package:shop/features/user/screens/chat/chat_with_customers.dart';
 import 'package:shop/features/user/widgets/build_list_view_all_customers.dart';
-import 'package:shop/features/user/widgets/build_snapshots_stream_message.dart';
 import 'package:shop/features/user/widgets/Loding.dart';
 import '../../../../config/colors/colors.dart';
 import '../../../../core/services/service_locator.dart';
-import '../../../../models/message_model.dart';
-import '../../../customer/logic/customer_cubit.dart';
-import '../../../customer/screens/home/chat/chat_with_user.dart';
 import '../../../home/screens/forgot_password/search_outline_input_border.dart';
 import '../../logic/user_cubit.dart';
 import '../../widgets/build_list_view_search_ustomer.dart';
@@ -70,13 +63,12 @@ class AllCustomersChatScreen extends StatelessWidget {
               ),
             Status.loading => Loading(),
             Status.success => BuildListViewCustomerAll(state: state),
-            Status.error => ScreenImpty(imagePath: AssetsManager.errorImage, text: "There was an Error"),
+            Status.error => ScreenImpty(
+                imagePath: AssetsManager.errorImage,
+                text: "There was an Error"),
           },
         ),
       ),
     );
   }
-
-
-
 }

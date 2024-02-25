@@ -3,11 +3,9 @@ import 'package:shop/features/customer/widgets/list_Item_cart.dart';
 
 import '../logic/customer_cubit.dart';
 
+// ignore: must_be_immutable
 class GridViewCategoryProducts extends StatelessWidget {
-  GridViewCategoryProducts({
-    super.key,
-    required this.state
-  });
+  GridViewCategoryProducts({super.key, required this.state});
   CustomerState state;
   @override
   Widget build(BuildContext context) {
@@ -15,16 +13,14 @@ class GridViewCategoryProducts extends StatelessWidget {
       primary: false,
       shrinkWrap: true,
       itemCount: state.categoryProducts.length,
-      gridDelegate:
-      const SliverGridDelegateWithMaxCrossAxisExtent(
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 250,
         childAspectRatio: 0.6,
         mainAxisSpacing: 20,
         crossAxisSpacing: 20,
       ),
       itemBuilder: (context, index) =>
-          itemProductCatiogoryProduct(
-              state, index, context),
+          itemProductCatiogoryProduct(state, index, context),
     );
   }
 }

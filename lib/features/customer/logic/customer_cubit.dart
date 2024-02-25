@@ -209,22 +209,23 @@ class CustomerCubit extends Cubit<CustomerState> {
         emit(state.copyWith(
           favoriteStatus: Status.success,
           msg: "delete in Favorite success ",
-          favoritesProducts: List.from(state.favoritesProducts)..removeWhere((p) => p.id == product.id),
+          favoritesProducts: List.from(state.favoritesProducts)
+            ..removeWhere((p) => p.id == product.id),
         ));
-        showToast(text: "delete in Favorite success", State: ToastState.WARNING);
+        showToast(
+            text: "delete in Favorite success", State: ToastState.WARNING);
       } else {
         favorite.add(product.id);
         emit(state.copyWith(
             favoriteStatus: Status.success,
-            favoritesProducts: List.from(state.favoritesProducts)..add(product)));
+            favoritesProducts: List.from(state.favoritesProducts)
+              ..add(product)));
       }
       await _repo.favorite(favorite, state.customer.id);
       emit(state.copyWith(
           customer: state.customer.copyWith(favorite: favorite),
           favoriteStatus: Status.success,
           msg: "added in Favorite success "));
-
-
     } on Exception catch (e) {
       emit(state.copyWith(favoriteStatus: Status.error, msg: e.toString()));
     }
@@ -307,13 +308,14 @@ class CustomerCubit extends Cubit<CustomerState> {
 
   String getId() => _repo.getId()!;
 
-  void addInUserCart(String productId, int quantity,) async {
+  void addInUserCart(
+    String productId,
+    int quantity,
+  ) async {
     emit(state.copyWith(addCartProductsState: Status.loading));
     try {
-
       await _repo.addInUserCart(productId, quantity);
       emit(state.copyWith(addCartProductsState: Status.success));
-
     } catch (e) {
       emit(state.copyWith(addCartProductsState: Status.error));
     }
@@ -347,18 +349,11 @@ class CustomerCubit extends Cubit<CustomerState> {
   }
 
   bool isProdinCart({required String productId}) {
-   if( state.customer.userCart.contains(productId)){
-     return false ;
-   }
-    final isProductInCart = state.cartsProducts.containsKey(productId);
-    //emit(state.copyWith(isProductInCart: isProductInCart));
+    if (state.customer.userCart.contains(productId)) {
+      return false;
+    }
     return state.cartsProducts.containsKey(productId);
   }
- /* bool isCartIdFound({required String cartId}) {
-    state.customer.userCart.contains(element)
-  return state.cartsProducts.containsKey(cartId);
-
-  }*/
 
   double getTotal() {
     double total = 0.0;

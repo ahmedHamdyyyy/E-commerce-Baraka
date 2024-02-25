@@ -1,7 +1,6 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:shop/core/services/service_locator.dart';
 import 'package:shop/features/customer/screens/home/cart/components/quantity_bottom_sheet_widget.dart';
@@ -27,9 +26,10 @@ class CartCard extends StatefulWidget {
 class _CartCardState extends State<CartCard> {
   @override
   Widget build(BuildContext context) {
-    final cart = getit<CustomerCubit>().findByProductId(widget.cartModel.productId);
+    final cart =
+        getit<CustomerCubit>().findByProductId(widget.cartModel.productId);
 
-    return  Row(
+    return Row(
       children: [
         SizedBox(
           width: 90,
@@ -65,8 +65,8 @@ class _CartCardState extends State<CartCard> {
                   Text(
                     cart.productName,
                     overflow: TextOverflow.ellipsis,
-                    style:
-                    TextStyle(fontSize: 16, color: kTextColor[widget.state.theme]),
+                    style: TextStyle(
+                        fontSize: 16, color: kTextColor[widget.state.theme]),
                     maxLines: 3,
                   ),
                   IconButton(
@@ -90,9 +90,7 @@ class _CartCardState extends State<CartCard> {
                     onPressed: () async {
                       await showModalBottomSheet(
                         backgroundColor:
-                        Theme
-                            .of(context)
-                            .scaffoldBackgroundColor,
+                            Theme.of(context).scaffoldBackgroundColor,
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(30),

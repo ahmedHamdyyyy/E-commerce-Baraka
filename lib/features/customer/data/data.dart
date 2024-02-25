@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shop/models/cart_model.dart';
 import 'package:shop/models/user.dart';
 import 'package:uuid/uuid.dart';
@@ -161,13 +158,11 @@ class CustomerData {
     return carts;
   }
 
-
   Future<void> favorite(List<String> favorite, String id) async =>
       await _api.fireStore
           .collection(AppConst.customerCollection)
           .doc(id)
           .update({AppConst.favorite: favorite});
-
 
   Future<void> removeCartItemFromFirestore({
     required String cartId,
@@ -191,7 +186,7 @@ class CustomerData {
       .collection(AppConst.customerCollection)
       .doc(getId())
       .update({AppConst.userCart: []});
-Future<void> addInUserCart(String productId, int quantity) async {
+  Future<void> addInUserCart(String productId, int quantity) async {
     final cartId = const Uuid().v4();
     final userCartRef =
         _api.fireStore.collection(AppConst.customerCollection).doc(getId());
@@ -221,17 +216,14 @@ Future<void> addInUserCart(String productId, int quantity) async {
     });
   }
 
-
-
-  Future<void> updateQty(
-      {required CartModelCustomer cartModel}) async {
+  Future<void> updateQty({required CartModelCustomer cartModel}) async {
     final response = await _api.fireStore
         .collection(AppConst.customerCollection)
         .doc(getId())
         .get();
     final userData = response.data()?[AppConst.userCart] ?? [];
-    int index = userData.
-        indexWhere((item) => item[AppConst.productId] == cartModel.productId);
+    int index = userData
+        .indexWhere((item) => item[AppConst.productId] == cartModel.productId);
     if (index != -1) {
       userData[index][AppConst.quantity] = cartModel.quantity;
       //print(userData[index][AppConst.quantity]);
@@ -240,7 +232,6 @@ Future<void> addInUserCart(String productId, int quantity) async {
           .doc(getId())
           .update({AppConst.userCart: userData});
     }
-
   }
 
   Future<CustomerModel?> getCustomer(String id) async {

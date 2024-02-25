@@ -16,10 +16,10 @@ class AllProductUser extends StatelessWidget {
   const AllProductUser({super.key});
   @override
   Widget build(BuildContext context) {
-    final controller=TextEditingController();
+    final controller = TextEditingController();
     final userId = getit<UserCubit>().getId();
     return Scaffold(
-      appBar:  AppBar(
+      appBar: AppBar(
         title: Padding(
           padding: const EdgeInsets.only(right: 20),
           child: TextFormField(
@@ -32,7 +32,7 @@ class AllProductUser extends StatelessWidget {
               filled: true,
               fillColor: kTextColor[0].withOpacity(0.1),
               contentPadding:
-              const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               border: searchOutlineInputBorder,
               focusedBorder: searchOutlineInputBorder,
               enabledBorder: searchOutlineInputBorder,
@@ -53,19 +53,19 @@ class AllProductUser extends StatelessWidget {
         child: SafeArea(
           child: BlocBuilder<UserCubit, UserState>(
             builder: (context, state) {
-              return switch(state.searchProductsState){
-                // TODO: Handle this case.
-                Status.initial => state.getAllProductsUserState == Status.loading
-                    ? Loading()
-                    : BodyAllProducts(
-                  state: state,
-                ),
-                Status.loading =>
-                     Loading()
-                   ,
+              return switch (state.searchProductsState) {
+                Status.initial =>
+                  state.getAllProductsUserState == Status.loading
+                      ? Loading()
+                      : BodyAllProducts(
+                          state: state,
+                        ),
+                Status.loading => Loading(),
                 Status.success => BodySearchListAllProducts(state: state),
                 // TODO: Handle this case.
-                Status.error =>ScreenImpty(imagePath:AssetsManager.errorImage , text: "There was an Error")
+                Status.error => ScreenImpty(
+                    imagePath: AssetsManager.errorImage,
+                    text: "There was an Error")
               };
             },
           ),
