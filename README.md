@@ -16,6 +16,9 @@ E-commerce Baraka is a feature-rich mobile application built with Flutter, aimed
 8-Integration with Firebase for data storage and retrieval.
 9-Implementation of clean code principles.
 ~~~
+## image for admin
+
+![photo_5972306051661414110_y](https://github.com/ahmedHamdyyyy/E-commerce-Baraka/assets/66388483/90692792-e0bf-4708-a843-b4aab1446e53)
 
 # video
 https://github.com/ahmedHamdyyyy/E-commerce-Baraka/assets/66388483/794dbe46-fcd0-4dd8-a38c-8641109b7bb2
