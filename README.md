@@ -1,16 +1,21 @@
-# shop
+# E-commerce Baraka   
 
-A new Flutter project.
+## overview
 
-## Getting Started
+E-commerce Baraka is a feature-rich mobile application built with Flutter, aimed at providing a seamless shopping experience for users and chatting users with admin The app is divided into two applications, one for the user and the other for the admin. It leverages Cubit for efficient state management, Firebase for backend services, and git_it for dependency injection.
 
-This project is a starting point for a Flutter application.
+### Features
+~~~
+1-Authentication: The admin can sign in, and the User can sign in and sign up and manage their account.
+2-Admin: Admin can add products, view, and update and delete, Search  Products.
+3-Users: Users can add products in Cart and Favorite, view, and delete From Cart and Favorite, and Search  Products.
+4-Chats: Admin can engage in real-time chat conversations with other users.
+5-Search: The user or admin can use search to search for users or Products.
+6-Theme: The user can use 2 theme modes dark mode and light mode.
+7-State management using the Cubit package.
+8-Integration with Firebase for data storage and retrieval.
+9-Implementation of clean code principles.
+~~~
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# video
+https://github.com/ahmedHamdyyyy/E-commerce-Baraka/assets/66388483/794dbe46-fcd0-4dd8-a38c-8641109b7bb2
